@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Fall 21"><meta name="theme-color" content="#0a0c0f"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fall 21 – Die fünf Siegel</title>
+<style>
+:root{--bg:#0a0c0f;--card:#12161b;--ink:#e8ecf0;--mut:#8995a3;--sig:#c4455f;--cu:#e2b66b;--ln:#252c35;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 -apple-system,system-ui,"SF Pro Text",sans-serif;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:-25%;z-index:-1;background:radial-gradient(35% 30% at 15% 15%,rgba(226,182,107,.10),transparent),radial-gradient(40% 35% at 85% 80%,rgba(196,69,95,.12),transparent);animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(8%,6%) scale(1.25)}}
+main{max-width:620px;margin:0 auto;padding:18px 16px 60px}
+h1{font-size:12px;letter-spacing:.42em;text-align:center;margin:8px 0 6px;color:var(--cu);font-weight:600}
+h2{font-size:30px;line-height:1.15;margin:6px 0 4px;font-weight:700;letter-spacing:-.02em;animation:blurin .9s both}
+@keyframes blurin{from{filter:blur(12px);opacity:0;letter-spacing:.18em}}
+.sub{color:var(--mut);font-size:14px;margin:0 0 16px}
+.seals{display:flex;justify-content:center;gap:12px;margin:12px 0 20px}
+.seals i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--mut);display:block;transition:all .6s}
+.seals i.on{background:var(--sig);border-color:var(--sig);box-shadow:0 0 14px var(--sig)}.seals i.cur{border-color:var(--cu);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px transparent,0 0 12px var(--cu)}}
+.card{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--ln);border-radius:20px;padding:24px 20px;margin-bottom:14px}
+.card::before{content:"";position:absolute;top:0;left:-50%;width:40%;height:1px;background:linear-gradient(90deg,transparent,var(--cu),transparent);animation:sweep 5s linear infinite}
+@keyframes sweep{to{left:110%}}
+.ic{width:60px;height:60px;stroke:var(--cu);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 0 12px;stroke-dasharray:240;animation:draw 2.2s ease-out both}
+@keyframes draw{from{stroke-dashoffset:240}to{stroke-dashoffset:0}}
+.card p{margin:0 0 16px;font-family:ui-serif,Georgia,serif;font-size:19px;line-height:1.65}.sc{overflow-x:auto;margin:0 0 16px}
+table{border-collapse:collapse;font-size:16px;margin:0 auto}td,th{border:1px solid var(--ln);padding:7px 12px;text-align:left}th{color:var(--cu);font-weight:600}
+button,input,select{font:inherit;color:var(--ink)}
+button{min-height:56px;padding:10px 18px;border-radius:14px;border:0;background:var(--cu);color:#16110a;width:100%;margin:6px 0;font-size:17px;font-weight:700;transition:transform .15s,opacity .2s}
+button:active{transform:scale(.96)}button.alt{background:transparent;color:var(--ink);border:1px solid var(--ln)}button:disabled{opacity:.3}
+input[type=text],input:not([type]),input[type=password],select{width:100%;min-height:56px;padding:10px 16px;border:1.5px solid var(--ln);border-radius:14px;background:var(--bg);font-size:20px;transition:border-color .2s,box-shadow .2s}
+input:focus{outline:0;border-color:var(--cu);box-shadow:0 0 0 4px rgba(226,182,107,.18)}
+.row{display:flex;gap:8px}.row button{margin:6px 0;font-size:15px}
+.hint{border-left:2px solid var(--cu);padding:4px 14px;margin:12px 0;font-size:16px;color:var(--ink);animation:up .45s both}
+.err{color:var(--sig);font-size:15px;min-height:22px}.shake{animation:sh .35s}
+@keyframes sh{20%{transform:translateX(-7px)}60%{transform:translateX(7px)}}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.anim .card>*,.anim .seals i{animation:up .7s cubic-bezier(.2,.8,.2,1) both}.anim .card>h2{animation:blurin .9s both}.anim .card>.ic{animation:draw 2.2s ease-out both}
+.sw{position:relative;width:110px;height:110px;margin:0 auto 12px}.seal{position:absolute;inset:7px;width:96px;height:96px;animation:stamp .8s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes stamp{0%{transform:scale(2.4) rotate(-25deg);opacity:0}60%{opacity:1}100%{transform:none}}
+.sw b{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--cu);animation:burst 1s .35s ease-out both}.sw b:nth-child(odd){background:var(--sig);width:5px;height:5px}
+@keyframes burst{from{transform:rotate(var(--a)) translateY(0)}to{transform:rotate(var(--a)) translateY(-80px) scale(.3);opacity:0}}
+.foot{display:flex;justify-content:space-between;margin-top:26px}.foot button{width:auto;min-height:44px;font-size:14px}
+#gm,#pn{position:fixed;inset:0;background:var(--bg);overflow:auto;padding:calc(14px + env(safe-area-inset-top,0px)) 16px calc(40px + env(safe-area-inset-bottom,0px));display:none;z-index:9}
+#gm.show,#pn.show{display:block}#gm .in,#pn .in{max-width:620px;margin:0 auto}
+#gm h3{margin:18px 0 4px;font-size:17px;color:var(--cu)}#gm p,#gm pre{font-size:15px;margin:4px 0;white-space:pre-wrap;font-family:inherit}
+.ng td{width:42px;height:42px;text-align:center;padding:0;font-size:20px;font-weight:600;user-select:none;-webkit-user-select:none;border-radius:8px;transition:background .2s,color .2s,transform .15s}
+.ng td.k{background:var(--cu);color:#16110a;transform:scale(.92)}.ng td.c{font-size:14px;color:var(--cu);border:0;line-height:1.15;vertical-align:bottom;font-weight:400}
+#spl{position:fixed;inset:0;z-index:99;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .7s}#spl.out{opacity:0;pointer-events:none}
+#spl svg{width:190px;overflow:visible}#spl .rg{fill:none;stroke:var(--cu);stroke-width:1;stroke-dasharray:315;animation:draw2 2.2s ease-out both}
+@keyframes draw2{from{stroke-dashoffset:315}to{stroke-dashoffset:0}}
+#spl .dt{fill:var(--sig);stroke:var(--cu);stroke-width:1.5;transform-box:fill-box;transform-origin:center;animation:dot .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes dot{from{transform:scale(0)}}
+#spl .t{fill:var(--cu);font:700 22px -apple-system,system-ui,sans-serif;text-anchor:middle;animation:up 1s 1.4s both}
+#spl small{color:var(--mut);letter-spacing:.3em;font-size:12px}#spl em{font-style:normal;color:var(--cu);font-size:13px;letter-spacing:.2em}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body><main id="app"></main><div id="gm"></div><div id="pn"></div><div id="spl" onclick="endSp()"><svg viewBox="0 0 120 120"><circle class=rg cx=60 cy=60 r=50 /><circle class=dt cx=60 cy=24 r=7 style="animation-delay:0.60s"/><circle class=dt cx=94 cy=49 r=7 style="animation-delay:0.95s"/><circle class=dt cx=81 cy=89 r=7 style="animation-delay:1.30s"/><circle class=dt cx=39 cy=89 r=7 style="animation-delay:1.65s"/><circle class=dt cx=26 cy=49 r=7 style="animation-delay:2.00s"/><text class=t x=60 y=67>21</text></svg><small>DAS ARCHIV ÖFFNET SICH</small><em id=cnt>0%</em></div>
+<script>
+// ===== KONFIGURATION (Platzhalter anpassen) =====
+const CFG={pin:"2110",pickupDefault:"[Abholpunkt – vom Spielleiter mitgeteilt]"};
+// ================================================
+const E=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const IC={
+mask:'<path d="M8 10h32v14c0 10-8 16-16 16S8 34 8 24z"/><path d="M15 21q3-3 7 0M26 21q3-3 7 0M18 31q6 4 12 0"/>',
+path:'<path d="M24 44V27M24 27L10 12M24 27L38 12M10 12V5M38 12V5M24 27V5"/>',
+wit:'<path d="M5 6h24v15H15l-5 5v-5H5zM19 27h24v15h-5v5l-5-5H19z"/>',
+wire:'<path d="M3 32q6-20 12 0t12 0 12 0M3 12h42"/><circle cx="12" cy="12" r="2.5"/><circle cx="26" cy="12" r="2.5"/><circle cx="40" cy="12" r="2.5"/>',
+grid:'<path d="M8 8h32v32H8zM8 19h32M8 30h32M19 8v32M30 8v32"/><rect x="19" y="19" width="11" height="11"/>',
+fin:'<circle cx="24" cy="24" r="8"/><circle cx="24" cy="5" r="2.5"/><circle cx="42" cy="18" r="2.5"/><circle cx="35" cy="41" r="2.5"/><circle cx="13" cy="41" r="2.5"/><circle cx="6" cy="18" r="2.5"/>'};
+const R=[
+{ic:'mask',t:"Die fünf Masken",s:"Siegel I · Denkrätsel · Reihenfolge und Spiegelung",re:/bibra/,next:"Heinrich-von-Bibra-Schule",
+txt:`Fünf Masken warten, stumm und sacht,
+in einer Reihe durch die Nacht.
+Von links nach rechts zählt eins bis fünf;
+kein Platz bleibt leer – nun ordne, prüf.
+
+Die Eule steht links vor dem Fuchs im Revier;
+doch zwingt sie kein direkter Abstand hier.
+Zwei Plätze rechts vom Wolf ruht Hirschens Licht;
+ein einziger Platz dazwischen bricht die Sicht.
+Der Rabe steht direkt beim Hirsch, ganz nah;
+ob links, ob rechts, verrät dir keiner da.
+Der Fuchs besetzt nie einen äußeren Rand;
+die Eule steht nicht neben Wolfs Gewand.
+Der Hirsch steht rechts vom Fuchs im Schein;
+mehr soll zu diesen Masken nicht verraten sein.
+
+Sind alle fünf an ihrem Ort,
+lies ihre Zeichen links nach rechts als Wort.
+
+MASKE | ZEICHEN
+Eule | Y
+Fuchs | R
+Wolf | Y
+Rabe | I
+Hirsch | Z
+
+Doch jeder Buchstabe trägt einen fremden Schein:
+Tausch A mit Z und B mit Y – so muss es sein.
+Auch C mit X; das Alphabet wird ganz gedreht,
+bis hinter deinem Fund ein alter Name steht.
+Die Ordnung und den Namen zeig als Spur;
+der Hüter bestätigt dann den Ort der Tour.`,
+ans:"BIBRA",path:"Reihenfolge Eule – Fuchs – Wolf – Rabe – Hirsch. Wolf auf 3, Hirsch auf 5, Rabe auf 4, Eule auf 1, Fuchs auf 2. Zeichen YRYIZ. Alphabet spiegeln: Y→B, R→I, Y→B, I→R, Z→A = BIBRA (Heinrich-von-Bibra-Schule).",
+h:["„Zwei Plätze rechts“ heißt Positionsdifferenz 2. Es sind keine zwei freien Plätze dazwischen.","Wolf ist auf 3, Hirsch auf 5. Ordne die übrigen Tiere.","Eule-Fuchs-Wolf-Rabe-Hirsch → YRYIZ → BIBRA."]},
+{ic:'path',t:"Der Preis der Abkürzung",s:"Siegel II · Informatikrätsel 1 · Graph und Chiffre",re:/mcfit/,next:"McFIT",
+txt:`Von S nach T führt mancher Pfad,
+doch nicht der billigste erste Schritt ist Rat.
+Nur Pfeilrichtung gilt auf jeder Strecke;
+die kleinste SUMME führt zur nächsten Ecke.
+
+von → nach | Kosten | Zeichen
+S → A | 3 | D
+A → B | 4 | T
+B → C | 2 | W
+C → D | 5 | Z
+D → T | 3 | K
+S → X | 1 | P
+X → B | 9 | L
+X → Y | 3 | R
+Y → D | 15 | Q
+A → Y | 8 | E
+B → T | 14 | A
+C → Y | 2 | U
+Y → T | 20 | S
+S → T | 28 | V
+D → A | 2 | O
+
+Lies auf dem besten Weg die Zeichen, Stück für Stück;
+verschieb sie um die GESAMTKOSTEN zurück.
+Vor A liegt Z, im Kreis läuft dieser Schein;
+so wird dein nächster Name lesbar sein.
+Nicht nur das Ziel: auch Weg und Preis sind Pflicht;
+wer bloß errät, zerbricht das Siegel nicht.`,
+ans:"MCFIT",path:"Einzig günstigster Weg S→A→B→C→D→T. Kosten 3+4+2+5+3 = 17. Zeichen DTWZK; um 17 rückwärts = MCFIT. Nächstgünstigste einfache Route kostet 20.",
+h:["Der günstigste erste Schritt garantiert keinen günstigsten Gesamtweg.","Die optimale Route beginnt S→A→B.","S-A-B-C-D-T, Kosten 17, DTWZK → MCFIT."]},
+{ic:'wit',t:"Die Zeugen des Schweigens",s:"Siegel III · Denkrätsel · Wahrheit, Lüge und verborgene Wörter",re:/muth.*partner/,next:"Muth & Partner",
+txt:`Fünf Kästen tragen Zeichen; einer birgt den Stein.
+Genau ZWEI Zeugen lügen, DREI sind wahr im Schein.
+„Oder“ schließt auch beide Möglichkeiten ein;
+die Aussagen selbst müssen eindeutig sein.
+
+ZEUGE 1: „Bei Schlüssel oder Brücke muss er sein;
+die übrigen drei Kästen bergen keinen Stein.“
+ZEUGE 2: „Des ersten Zeugen Rede stimmt hier nicht;
+sein ganzer Satz ist falsch in dieser Sicht.“
+ZEUGE 3: „Bei Waage oder Turm liegt unser Stein;
+in allen anderen Kästen kann er nicht sein.“
+ZEUGE 4: „Zwei und drei sind beide wahr – oder beide Lügen;
+nur gleiche Wahrheitswerte können hier genügen.“
+ZEUGE 5: „Der Schlüssel-Kasten bleibt vom Stein befreit;
+er ist dort nicht verborgen, zu keiner Zeit.“
+
+KASTEN | ZAHLENPAAR
+Schlüssel | 1 / 1
+Waage | 2 / 1
+Flamme | 1 / 3
+Turm | 2 / 2
+Brücke | 3 / 1
+
+Die erste Zahl zählt WÖRTER in jeder Zeile hier;
+die zweite zählt im Wort den BUCHSTABEN dir.
+Zähl nur die Wörter, kein Satzzeichen, keine Zahl;
+lies die elf Funde nacheinander, ohne Wahl.
+
+Im Nebel murmeln Namen sacht,
+Die Schatten urteilen durch die Nacht.
+Wo Worte täuschen, schweigt der Stein,
+Und Zeiger hüten stummen Schein.
+Die Masken prüfen deinen Mut,
+Im Stillen antwortet die Glut.
+Die Spuren ruhen unter Sand,
+Doch Namen tragen uns durchs Land.
+Die Zahlen nähren keinen Chor,
+Und Zweifel enden vor dem Tor,
+Die Türen rufen: tritt hervor.
+
+Den Kasten, drei wahre Zeugen und den Namen gib;
+erst dann bricht dieses Siegel seinen stillen Trieb.`,
+ans:"MUTHPARTNER",path:"Nur Brücke erfüllt genau zwei Lügner (Zeugen 2 und 3 lügen; 1, 4, 5 wahr). Zahlenpaar 3/1 = drittes Wort, erster Buchstabe je Zeile: murmeln, urteilen, täuschen, hüten, prüfen, antwortet, ruhen, tragen, nähren, enden, rufen → MUTHPARTNER. Er muss Kasten, drei wahre Zeugen und den Namen nennen.",
+h:["Pro angenommenem Kasten alle fünf Wahrheitswerte berechnen; Zeuge 4 vergleicht nur Zeugen 2 und 3.","Bei Brücke sind 1, 4, 5 wahr. Das Zahlenpaar ist 3/1.","Drittes Wort jeder der elf Zeilen, jeweils erster Buchstabe → MUTHPARTNER."]},
+{ic:'wire',t:"Die Stimmen im Draht",s:"Siegel IV · Informatikrätsel 2 · Ein erfundenes Datenprotokoll",re:/domplatz/,next:"Domplatz",
+txt:`Sechs Zeilen rauschen durch den Draht;
+nicht jede trägt den rechten Rat.
+Nur ID 21 in HEX gehört zum Kreis;
+seq bleibt DEZIMAL – das ist der Preis.
+Die Prüfsumme entsteht, wenn XOR sich vereint:
+ID, seq modulo 256, dann jedes Datenbyte gemeint.
+Stimmt sie nicht, wirf diese Zeile fort;
+alle Werte außer seq sind HEX an diesem Ort.
+
+ID | seq | Daten (hex) | Prüfsumme
+21 | 1005 | 60 75 7B | A2
+21 | 1003 | 7F 7E | 00
+21 | 1002 | 6C 71 6D | BB
+20 | 1000 | 58 58 | C8
+21 | 1000 | 65 6E 6C | AE
+21 | 1002 | 6C 71 6D | BB
+
+seq nennt die Position des ERSTEN Bytes im Strom;
+das nächste steht bei seq+1, so baut sich das Phantom.
+Von 1000 bis 1007 reicht das ganze Band;
+doppelte Positionen zählen einmal in der Hand.
+Gleiche Positionen tragen hier denselben Wert;
+nach Position sortiert wird jedes Byte erklärt.
+XOR nun jedes Byte mit 21 HEX im Kreis;
+ASCII macht daraus den Ort und gibt den Preis.
+ASCII-HEX: A 41  B 42  C 43  D 44  E 45  F 46  G 47  H 48  I 49  J 4A  K 4B  L 4C  M 4D  N 4E  O 4F  P 50  Q 51  R 52  S 53  T 54  U 55  V 56  W 57  X 58  Y 59  Z 5A
+
+Gültige Zeilen, Bytes und Ziel gehören zum Bericht;
+mit bloßem Raten öffnet sich das Siegel nicht.`,
+ans:"DOMPLATZ",path:"Gültige Zeilen 1, 3, 5, 6 (Zeile 2: falsche Prüfsumme; Zeile 4: fremde ID; Zeile 6 dupliziert 3). Strom nach Position: 65 6E 6C 71 6D 60 75 7B. XOR 21 HEX = 44 4F 4D 50 4C 41 54 5A = DOMPLATZ.",
+h:["Erst ID, dann Prüfsumme, dann Positionen.","7F 7E ist beschädigt; die Daten ab 1002 wiederholen sich.","Nimm Zeilen 1, 3, 5, ignoriere die Wiederholung 6. XOR 21 ergibt DOMPLATZ."]},
+{ic:'grid',t:"Das Bild ohne Bild",s:"Siegel V · Denkrätsel · Ein eindeutig lösbares Nonogramm",re:/koenig.*konrad/,next:"Mo – Abholpunkt",ng:1,
+txt:`Ein Bild verschweigt, was seine Felder sagen;
+die Zahlen helfen, Schwarz und Weiß einzutragen.
+Sie nennen SCHWARZE Blöcke, Stück für Stück;
+mindestens ein weißes Feld hält zwei Blöcke zurück.
+Links steht die ZEILENfolge, oben SPALTEN von links nach rechts;
+die Blockfolge gilt genau, kein Tausch ist recht.
+Ein Block aus drei heißt drei schwarze Felder dicht;
+wo keine Schwärze nötig, bleibt das Feld im Licht.`,
+txt2:`Sind schwarze Felder richtig aufgereiht,
+lies nur dort die Buchstaben in Leserichtung bereit:
+links nach rechts, dann nächste Zeile – bis unten der Rand;
+so werden Mensch und Straße dir bekannt.
+OE ersetzt Ö, ein Leerraum fehlt im Wort;
+trenn selbst die Teile – sie führen dich zum Ort.
+Zeig Bild und Namen, dann nennt der Hüter dir
+den abgesprochenen Abholpunkt als letzte Tür.
+Kein Haus wird jetzt betreten, kein Raum ist unser Ziel;
+der Mensch kommt mit – und vollendet dieses Spiel.`,
+ans:"MO KOENIG KONRAD STRASSE",path:"Schwarz (#) / weiß (.):\n# . # . # .\n# . # . . #\n. . . # # .\n# . # # # #\n. . # # # #\n# # . # . #\nNur schwarze Felder in Leserichtung: MOKOENIGKONRADSTRASSE = MO / KÖNIG-KONRAD-STRASSE. Ohne Hausnummer keine exakte Adresse: Spielleiter nennt den vereinbarten Abholpunkt.",
+h:["Die Zahlen nennen Blocklängen, keine Feldpositionen. Zwischen Blöcken muss mindestens ein weißes Feld liegen.","Erste Zeile ist schwarz weiß schwarz weiß schwarz weiß.","Zeige das Muster aus dem Spielleiterbereich. Lies nur die schwarzen Felder."]},
+{ic:'fin',t:"Von Nacht zu Morgen",s:"Siegel VI · Finale am stehenden Auto · Alle fünf Fragmente bereithalten",re:/best.*freund/,fin:1,
+txt:`Fünf Stücke hast du durch die Nacht getragen;
+jetzt müssen sie einander Antwort sagen.
+Jedes trägt links und rechts ein Wort im Schein;
+der rechte Rand muss links beim nächsten sein.
+Bei NACHT beginnt die Kette, MORGEN schließt sie zu;
+dazwischen findet jedes Stück die rechte Ruh.
+Lies nur die TEXT-Felder, füge sie aneinander an;
+so fängt der letzte kleine Wandel an.
+Verschieb die Buchstaben im Alphabet zurück,
+um dein NEUES ALTER – Stück für Stück.
+Vor A liegt Z, die Runde schließt den Kreis;
+lies laut, was bleibt: das ist der wahre Preis.
+Die letzten Sekunden gehören jetzt dir;
+kein Rätsel hält die Glückwünsche vor der Tür.
+Um Mitternacht wird Paket 6 frei;
+wir stehen zusammen – und Mo ist dabei.`,
+ans:"BESTER FREUND",path:"Kette NACHT → MOND → DORN → SCHLÜSSEL → FLAMME → MORGEN. Fragmentreihenfolge 4, 2, 5, 1, 3. Texte um 21 rückwärts: BE / STER / FR / EU / ND = BESTERFREUND. Kurzes gemeinsames Finale; bei Bedarf um 00:00 Uhr gemeinsam auflösen.",
+h:["Beginne mit Fragment 4. Dann passen immer zwei gleiche Randwörter zusammen."]}];
+const BONUS=`Fünf Siegel sind gebrochen, alle Wege sind geschafft;
+jetzt wird kein Code geprüft – jetzt wird gelacht.
+Dein Kopf hat heut genug getan,
+jetzt ist der Hunger endlich dran.
+Crunchy? Oder lieber anderswo?
+Du suchst aus – wir machen dich froh.
+Was hat noch offen? Worauf hast du Lust?
+Dein Essen geht auf uns – damit du’s nicht zahlen musst.
+Das Geschenk ist längst in deiner Hand;
+jetzt wird zusammen gegessen, ganz entspannt.`;
+const ROUTE="Start (bei dir) → Heinrich-von-Bibra-Schule (Buseckstraße 5) → McFIT (Petersberger Straße 36, gegenprüfen) → Muth & Partner (Rangstraße 5, nur nutzen, wenn dort Denis arbeitet) → Domplatz (öffentlicher Weg, keine Gebäude betreten) → Mo am Aschenberg, König-Konrad-Straße (Abholpunkt mit Mo vereinbaren, keine Hausnummer voraussetzen). Geschenkübergabe um 00:00 Uhr am geparkten Auto, danach Essen nach Denis’ Wahl (Vorschlag Crunchy Kebab, vorher telefonisch bestätigen).";
+const K="fall21-v1",D={c:0,p:"play",h:{},b:0,pk:"",th:""};
+let S;try{S=Object.assign({},D,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){S=Object.assign({},D)}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+let gm=false,msg="",ngOn=new Set();
+const norm=s=>s.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/\bund\b/g,"").replace(/[^a-z]/g,"");
+function body(t){let o="",tb=[],tx=[],last="";const fl=()=>{if(tx.length)o+="<p>"+tx.map(E).join("<br>")+"</p>";if(tb.length)o+='<div class=sc><table>'+tb.map((r,i)=>"<tr>"+r.split(" | ").map(c=>"<"+(i?"td":"th")+">"+E(c)+"</"+(i?"td":"th")+">").join("")+"</tr>").join("")+"</table></div>";tx=[];tb=[]};
+t.split("\n").forEach(l=>{if(l==="")return fl();const tt=l.includes(" | ");if(tt&&tx.length||!tt&&tb.length)fl();(tt?tb:tx).push(l)});fl();return o}
+const NR=[[1,1,1],[1,1,1],[2],[1,4],[4],[2,1,1]],NC=[[2,1,1],[1],[2,2],[4],[1,3],[1,3]],NL=["MAOWKS","OTENBN","VBAIGF","KYONRA","KFDSTR","ASPSIE"];
+function ng(){let h='<div class=sc><table class=ng><tr><td class=c></td>'+NC.map(c=>'<td class=c>'+c.join("<br>")+'</td>').join("")+'</tr>';
+NL.forEach((r,i)=>{h+='<tr><td class=c style="text-align:right;vertical-align:middle;width:auto;white-space:nowrap">'+NR[i].join(" ")+'</td>'+[...r].map((ch,j)=>'<td class="'+(ngOn.has(i+"-"+j)?"k":"")+'" onclick="tg('+i+','+j+')">'+ch+'</td>').join("")+'</tr>'});
+let o="";NL.forEach((r,i)=>[...r].forEach((ch,j)=>{if(ngOn.has(i+"-"+j))o+=ch}));
+return h+'</table></div><p style="font-size:15px;color:var(--mut)">Tippe Felder an, um sie schwarz zu färben. Gelesen: <b>'+E(o||"–")+'</b></p>'}
+function tg(i,j){const k=i+"-"+j;ngOn.has(k)?ngOn.delete(k):ngOn.add(k);render()}
+function render(){
+const c=S.c,r=R[c];let h="";
+if(S.th)document.documentElement.dataset.theme=S.th;
+h+='<h1>FALL 21 — DIE FÜNF SIEGEL</h1><div class=seals>'+[0,1,2,3,4].map(i=>'<i class="'+(i<c||(i==c&&S.p=="open")||S.b?"on":"")+(i==c&&!S.b?" cur":"")+'"></i>').join("")+'</div>';
+if(S.b){h+='<div class=card><h2>Die Kirsche auf der Nacht</h2><p class=sub>Denis entscheidet; keine Geschenkübergabe im Lokal.</p>'+body(BONUS)+'</div>'}
+else if(S.p=="play"){
+h+='<div class=card><svg class=ic viewBox="0 0 48 48">'+IC[r.ic]+'</svg><h2>'+E(r.t)+'</h2><p class=sub>'+E(r.s)+'</p>'+body(r.txt)+(r.ng?ng()+body(r.txt2):"")+'</div>';
+h+='<div class=card><input id=a type=text placeholder="Deine Lösung" autocomplete=off autocapitalize=characters onkeydown="if(event.key==\'Enter\')chk()"><div class=err id=er>'+E(msg)+'</div><button onclick="chk()">Siegel prüfen</button></div>';
+const n=S.h[c]||0;h+='<div class=card><div class=row>'+r.h.map((_,i)=>'<button class=alt '+(i>n?"disabled":"")+' onclick="hint('+(i+1)+')">Hint '+(i+1)+'</button>').join("")+'</div>'+r.h.slice(0,n).map((x,i)=>'<div class=hint><b>Hint '+(i+1)+':</b> '+E(x)+'</div>').join("")+'</div>'}
+else if(S.p=="check"){
+h+='<div class=card><svg class=ic viewBox="0 0 48 48">'+IC[r.ic]+'</svg><h2>Die Antwort passt.</h2><p>Zeig dem Hüter jetzt deinen Lösungsweg. Erst wenn er ihn bestätigt, bricht das Siegel.</p><button onclick="act(\'ok\')">Hüter bestätigt den Lösungsweg</button></div>'}
+else{
+const fin=r.fin;
+h+='<div class=card style="text-align:center"><div class=sw>'+[...Array(14)].map((_,i)=>'<b style="--a:'+i*(360/14)+'deg"></b>').join("")+'<svg class=seal viewBox="0 0 96 96"><circle cx="48" cy="48" r="42" fill="#c4455f" stroke="#e2b66b" stroke-width="3"/><circle cx="48" cy="48" r="30" fill="none" stroke="#e2b66b" stroke-width="2" stroke-dasharray="3 4"/><path d="M30 48l12 12 24-26" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg></div>';
+if(fin)h+='<h2>Alle Siegel sind gebrochen.</h2><p>Um Mitternacht wird Paket 6 gemeinsam übergeben.</p><button onclick="act(\'gift\')">Geschenk übergeben (Hüter)</button>';
+else{const nx=c==4?"Mo wartet am vereinbarten Abholpunkt in der König-Konrad-Straße: "+(S.pk||CFG.pickupDefault):r.next;
+h+='<h2>Siegel '+(c+1)+' ist geöffnet.</h2><p>Öffne jetzt <b>Paket '+(c+1)+'</b>.</p><p>Nächster Ort:<br><b>'+E(nx)+'</b></p><p class=sub>Das nächste Rätsel gibt es erst vor Ort.</p><button onclick="act(\'arrive\')">Ankunft bestätigen (Hüter)</button>'}
+h+='</div>'}
+h+='<div class=foot><span></span><button class=alt onclick="openGM()">Spielleiter</button></div>';
+const key=S.c+S.p+S.b,ap=document.getElementById("app");ap.className=key!==window.lk?"anim":"";window.lk=key;
+ap.innerHTML=h;ap.querySelectorAll(".anim .card>*,.anim .seals i").forEach((e,i)=>e.style.animationDelay=Math.min(i*70,1100)+"ms");document.querySelectorAll("button.disabled").forEach(b=>b.disabled=true)}
+function chk(){const v=norm(document.getElementById("a").value);if(R[S.c].re.test(v)){msg="";S.p=S.c==5?"open":"check";save();render()}else{msg="Das Siegel bleibt geschlossen. Prüfe deine Antwort noch einmal.";render();const e=document.querySelector("input");e.classList.add("shake")}}
+function hint(i){if(i<=(S.h[S.c]||0)+1){S.h[S.c]=Math.max(S.h[S.c]||0,i);save();render()}}
+let pcb,rs=0;
+function pin(cb){pcb=cb;const p=document.getElementById("pn");p.innerHTML='<div class=in><h2>Spielleiter-PIN</h2><input id=pi type=password inputmode=numeric autocomplete=off><div class=err id=pe></div><button onclick="pok()">Bestätigen</button><button class=alt onclick="pclose()">Abbrechen</button></div>';p.classList.add("show");setTimeout(()=>document.getElementById("pi").focus(),50)}
+function pok(){if(document.getElementById("pi").value===CFG.pin){gm=true;pclose();pcb&&pcb()}else document.getElementById("pe").textContent="Falsche PIN."}
+function pclose(){document.getElementById("pn").classList.remove("show")}
+function act(a,x){if(!gm){pin(()=>act(a,x));return}if(a!='reset')rs=0;
+if(a=="ok"||a=="free")S.p="open";
+else if(a=="arrive"){if(S.c<5){S.c++;S.p="play"}}
+else if(a=="skip"){if(S.c<5){S.c++;S.p="play"}else S.p="open"}
+else if(a=="gift"){S.b=1}
+else if(a=="fin"){S.c=5;S.p="play";S.b=0}
+else if(a=="jump"){S.c=+x;S.p="play";S.b=0}
+else if(a=="back"){S.b=0;S.p="open";S.c=Math.min(S.c,5)}
+else if(a=="reset"){if(!rs){rs=1;openGM(true);return}rs=0;S=Object.assign({},D,{th:S.th,pk:S.pk});ngOn.clear()}
+save();render();if(document.getElementById("gm").classList.contains("show"))openGM(true);else gm=false}
+function openGM(skip){if(!skip&&!gm){pin(()=>openGM());return}const g=document.getElementById("gm"),c=S.c,r=R[c];
+g.innerHTML='<div class=in><h2>Spielleiter</h2><p class=sub>Aktuell: Siegel '+(c+1)+' · Phase: '+S.p+(S.b?" · Bonus offen":"")+'</p>'+
+'<h3>Aktuelles Rätsel: '+E(r.t)+'</h3><p><b>Antwort:</b> '+E(r.ans)+'</p><pre>'+E(r.path)+'</pre>'+
+'<h3>Hints (PDF)</h3>'+r.h.map((x,i)=>'<p>'+(i+1)+': '+E(x)+'</p>').join("")+
+'<h3>Aktionen</h3><button onclick="act(\'ok\')">Lösungsweg bestätigen / Siegel öffnen</button><button class=alt onclick="act(\'arrive\')">Ankunft bestätigen (nächstes Rätsel)</button><button class=alt onclick="act(\'skip\')">Rätsel überspringen</button><button class=alt onclick="act(\'fin\')">Direkt zum Finale</button><button class=alt onclick="act(\'gift\')">Geschenk übergeben → Bonuskarte</button>'+
+'<h3>Springe zu Rätsel</h3><select onchange="act(\'jump\',this.value)">'+R.map((x,i)=>'<option value='+i+(i==c?" selected":"")+'>'+(i+1)+' – '+E(x.t)+'</option>').join("")+'</select>'+
+'<h3>Abholpunkt (Mo)</h3><input type=text value="'+E(S.pk)+'" placeholder="'+E(CFG.pickupDefault)+'" onchange="S.pk=this.value;save()">'+
+'<h3>Route (nur Spielleitung)</h3><p>'+E(ROUTE)+'</p>'+
+'<h3>Hinweis zur Sicherheit</h3><p>Diese Seite ist rein statisch. Lösungen und PIN stehen im Quelltext; es gibt keinen echten technischen Zugriffsschutz. Der Schutz beruht auf Vertrauen und darauf, dass Denis den Quelltext nicht öffnet.</p>'+
+'<button class=alt onclick="act(\'reset\')">'+(rs?'Wirklich alles zurücksetzen – nochmal tippen':'Alles zurücksetzen')+'</button><button onclick="document.getElementById(\'gm\').classList.remove(\'show\');gm=false">Zurück zum Spiel</button></div>';
+g.classList.add("show")}
+document.addEventListener("visibilitychange",()=>{if(document.hidden){gm=false;document.getElementById("gm").classList.remove("show")}});
+let t0=Date.now(),iv,done=0;
+function endSp(){if(done)return;done=1;clearInterval(iv);render();const e=document.getElementById("spl");e.classList.add("out");setTimeout(()=>e.remove(),800)}
+iv=setInterval(()=>{const p=Math.min(100,Math.round((Date.now()-t0)/26));document.getElementById("cnt").textContent=p+"%";if(p>=100)endSp()},40);
+if("serviceWorker" in navigator)try{navigator.serviceWorker.register("sw.js").catch(()=>{})}catch(e){}
+</script></body></html>
