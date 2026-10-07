@@ -210,7 +210,7 @@ Gültige Zeilen, Bytes und Ziel gehören zum Bericht;
 mit bloßem Raten öffnet sich das Siegel nicht.`,
 ans:"DOMPLATZ",path:"Gültige Zeilen 1, 3, 5, 6 (Zeile 2: falsche Prüfsumme; Zeile 4: fremde ID; Zeile 6 dupliziert 3). Strom nach Position: 65 6E 6C 71 6D 60 75 7B. XOR 21 HEX = 44 4F 4D 50 4C 41 54 5A = DOMPLATZ.",
 h:["Erst ID, dann Prüfsumme, dann Positionen.","7F 7E ist beschädigt; die Daten ab 1002 wiederholen sich.","Nimm Zeilen 1, 3, 5, ignoriere die Wiederholung 6. XOR 21 ergibt DOMPLATZ."]},
-{ic:'grid',t:"Das Bild ohne Bild",s:"Siegel V · Denkrätsel · Ein eindeutig lösbares Nonogramm",re:/koenig.*konrad/,next:"Mo – Abholpunkt",ng:1,
+{ic:'grid',t:"Das Bild ohne Bild",s:"Siegel V · Denkrätsel · Ein eindeutig lösbares Nonogramm",re:/eigen.*auto/,next:"Zurück zu deinem Auto",ng:1,
 txt:`Ein Bild verschweigt, was seine Felder sagen;
 die Zahlen helfen, Schwarz und Weiß einzutragen.
 Sie nennen SCHWARZE Blöcke, Stück für Stück;
@@ -222,15 +222,15 @@ wo keine Schwärze nötig, bleibt das Feld im Licht.`,
 txt2:`Sind schwarze Felder richtig aufgereiht,
 lies nur dort die Buchstaben in Leserichtung bereit:
 links nach rechts, dann nächste Zeile – bis unten der Rand;
-so werden Mensch und Straße dir bekannt.
-OE ersetzt Ö, ein Leerraum fehlt im Wort;
-trenn selbst die Teile – sie führen dich zum Ort.
-Zeig Bild und Namen, dann nennt der Hüter dir
-den abgesprochenen Abholpunkt als letzte Tür.
-Kein Haus wird jetzt betreten, kein Raum ist unser Ziel;
-der Mensch kommt mit – und vollendet dieses Spiel.`,
-ans:"MO KOENIG KONRAD STRASSE",path:"Schwarz (#) / weiß (.):\n# . # . # .\n# . # . . #\n. . . # # .\n# . # # # #\n. . # # # #\n# # . # . #\nNur schwarze Felder in Leserichtung: MOKOENIGKONRADSTRASSE = MO / KÖNIG-KONRAD-STRASSE. Ohne Hausnummer keine exakte Adresse: Spielleiter nennt den vereinbarten Abholpunkt.",
-h:["Die Zahlen nennen Blocklängen, keine Feldpositionen. Zwischen Blöcken muss mindestens ein weißes Feld liegen.","Erste Zeile ist schwarz weiß schwarz weiß schwarz weiß.","Zeige das Muster aus dem Spielleiterbereich. Lies nur die schwarzen Felder."]},
+so wird das letzte Ziel dir jetzt bekannt.
+Drei Wörter ruhen ohne Abstand hier;
+trenn sie und zeig das letzte Ziel dann mir.
+Du suchtest fern, von Ort zu Ort,
+doch fuhr die Antwort niemals fort.
+Was dich durch diese Nacht getragen,
+bewahrt das Ende deiner Fragen.`,
+ans:"DEIN EIGENES AUTO",path:"Schwarz (#) / weiß (.):\n# . # . .\n. # # # #\n# # . # .\n# . . # #\n# # # . .\nNur schwarze Felder in Leserichtung: DEINEIGENESAUTO = DEIN / EIGENES / AUTO. Gemeint ist Denis’ eigenes, geparktes Auto. Jetzt Paket 5 ausgeben und zusammen zum Auto zurückgehen. Mo fährt seit dem Start mit und nimmt Paket 6 erst um 00:00 Uhr aus seiner Tasche.",
+h:["Die Zahlen nennen Blocklängen, keine Feldpositionen. Zwischen Blöcken muss mindestens ein weißes Feld liegen.","Erste Zeile ist schwarz weiß schwarz weiß weiß.","Zeige das Muster aus dem Spielleiterbereich. Lies nur die schwarzen Felder."]},
 {ic:'fin',t:"Von Nacht zu Morgen",s:"Siegel VI · Finale am stehenden Auto · Alle fünf Fragmente bereithalten",re:/best.*freund/,fin:1,
 txt:`Fünf Stücke hast du durch die Nacht getragen;
 jetzt müssen sie einander Antwort sagen.
@@ -260,15 +260,15 @@ Was hat noch offen? Worauf hast du Lust?
 Dein Essen geht auf uns – damit du’s nicht zahlen musst.
 Das Geschenk ist längst in deiner Hand;
 jetzt wird zusammen gegessen, ganz entspannt.`;
-const ROUTE="Start (bei dir) → Heinrich-von-Bibra-Schule (Buseckstraße 5) → McFIT (Petersberger Straße 36, gegenprüfen) → Muth & Partner (Rangstraße 5, nur nutzen, wenn dort Denis arbeitet) → Domplatz (öffentlicher Weg, keine Gebäude betreten) → Mo am Aschenberg, König-Konrad-Straße (Abholpunkt mit Mo vereinbaren, keine Hausnummer voraussetzen). Geschenkübergabe um 00:00 Uhr am geparkten Auto, danach Essen nach Denis’ Wahl (Vorschlag Crunchy Kebab, vorher telefonisch bestätigen).";
-const K="fall21-v1",D={c:0,p:"play",h:{},b:0,pk:"",th:""};
+const ROUTE="Start (bei dir) → Heinrich-von-Bibra-Schule (Buseckstraße 5) → McFIT (Petersberger Straße 36, gegenprüfen) → Muth & Partner (Rangstraße 5, nur nutzen, wenn dort Denis arbeitet) → Domplatz (öffentlicher Weg, keine Gebäude betreten; Auto vorher legal auf zugänglichem Parkplatz abstellen) → zurück zu Denis’ eigenem geparktem Auto. Mo fährt von Anfang an mit, Paket 6 bleibt verborgen in Mos undurchsichtiger Tasche. Geschenkübergabe um 00:00 Uhr im oder am stehenden Auto, danach Essen nach Denis’ Wahl (Vorschlag Crunchy Kebab, vorher bestätigen). Keine zusätzliche Adresse, keine Abholung.";
+const K="fall21-v2",D={c:0,p:"play",h:{},b:0,pk:"",th:""};
 let S;try{S=Object.assign({},D,JSON.parse(localStorage.getItem(K)||"{}"))}catch(e){S=Object.assign({},D)}
 const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 let gm=false,msg="",ngOn=new Set();
 const norm=s=>s.toLowerCase().replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss").replace(/\bund\b/g,"").replace(/[^a-z]/g,"");
 function body(t){let o="",tb=[],tx=[],last="";const fl=()=>{if(tx.length)o+="<p>"+tx.map(E).join("<br>")+"</p>";if(tb.length)o+='<div class=sc><table>'+tb.map((r,i)=>"<tr>"+r.split(" | ").map(c=>"<"+(i?"td":"th")+">"+E(c)+"</"+(i?"td":"th")+">").join("")+"</tr>").join("")+"</table></div>";tx=[];tb=[]};
 t.split("\n").forEach(l=>{if(l==="")return fl();const tt=l.includes(" | ");if(tt&&tx.length||!tt&&tb.length)fl();(tt?tb:tx).push(l)});fl();return o}
-const NR=[[1,1,1],[1,1,1],[2],[1,4],[4],[2,1,1]],NC=[[2,1,1],[1],[2,2],[4],[1,3],[1,3]],NL=["MAOWKS","OTENBN","VBAIGF","KYONRA","KFDSTR","ASPSIE"];
+const NR=[[1,1],[4],[2,1],[1,2],[3]],NC=[[1,3],[2,1],[2,1],[3],[1,1]],NL=["DPECL","AINEI","GEWNS","ETNSA","UTOBV"];
 function ng(){let h='<div class=sc><table class=ng><tr><td class=c></td>'+NC.map(c=>'<td class=c>'+c.join("<br>")+'</td>').join("")+'</tr>';
 NL.forEach((r,i)=>{h+='<tr><td class=c style="text-align:right;vertical-align:middle;width:auto;white-space:nowrap">'+NR[i].join(" ")+'</td>'+[...r].map((ch,j)=>'<td class="'+(ngOn.has(i+"-"+j)?"k":"")+'" onclick="tg('+i+','+j+')">'+ch+'</td>').join("")+'</tr>'});
 let o="";NL.forEach((r,i)=>[...r].forEach((ch,j)=>{if(ngOn.has(i+"-"+j))o+=ch}));
@@ -289,7 +289,7 @@ else{
 const fin=r.fin;
 h+='<div class=card style="text-align:center"><div class=sw>'+[...Array(14)].map((_,i)=>'<b style="--a:'+i*(360/14)+'deg"></b>').join("")+'<svg class=seal viewBox="0 0 96 96"><circle cx="48" cy="48" r="42" fill="#c4455f" stroke="#e2b66b" stroke-width="3"/><circle cx="48" cy="48" r="30" fill="none" stroke="#e2b66b" stroke-width="2" stroke-dasharray="3 4"/><path d="M30 48l12 12 24-26" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg></div>';
 if(fin)h+='<h2>Alle Siegel sind gebrochen.</h2><p>Um Mitternacht wird Paket 6 gemeinsam übergeben.</p><button onclick="act(\'gift\')">Geschenk übergeben (Hüter)</button>';
-else{const nx=c==4?"Mo wartet am vereinbarten Abholpunkt in der König-Konrad-Straße: "+(S.pk||CFG.pickupDefault):r.next;
+else{const nx=r.next;
 h+='<h2>Siegel '+(c+1)+' ist geöffnet.</h2><p>Öffne jetzt <b>Paket '+(c+1)+'</b>.</p><p>Nächster Ort:<br><b>'+E(nx)+'</b></p><p class=sub>Das nächste Rätsel gibt es erst vor Ort.</p><button onclick="act(\'arrive\')">Ankunft bestätigen (Hüter)</button>'}
 h+='</div>'}
 h+='<div class=foot><span></span><button class=alt onclick="openGM()">Spielleiter</button></div>';
@@ -317,7 +317,6 @@ g.innerHTML='<div class=in><h2>Spielleiter</h2><p class=sub>Aktuell: Siegel '+(c
 '<h3>Hints (PDF)</h3>'+r.h.map((x,i)=>'<p>'+(i+1)+': '+E(x)+'</p>').join("")+
 '<h3>Aktionen</h3><button onclick="act(\'ok\')">Lösungsweg bestätigen / Siegel öffnen</button><button class=alt onclick="act(\'arrive\')">Ankunft bestätigen (nächstes Rätsel)</button><button class=alt onclick="act(\'skip\')">Rätsel überspringen</button><button class=alt onclick="act(\'fin\')">Direkt zum Finale</button><button class=alt onclick="act(\'gift\')">Geschenk übergeben → Bonuskarte</button>'+
 '<h3>Springe zu Rätsel</h3><select onchange="act(\'jump\',this.value)">'+R.map((x,i)=>'<option value='+i+(i==c?" selected":"")+'>'+(i+1)+' – '+E(x.t)+'</option>').join("")+'</select>'+
-'<h3>Abholpunkt (Mo)</h3><input type=text value="'+E(S.pk)+'" placeholder="'+E(CFG.pickupDefault)+'" onchange="S.pk=this.value;save()">'+
 '<h3>Route (nur Spielleitung)</h3><p>'+E(ROUTE)+'</p>'+
 '<h3>Hinweis zur Sicherheit</h3><p>Diese Seite ist rein statisch. Lösungen und PIN stehen im Quelltext; es gibt keinen echten technischen Zugriffsschutz. Der Schutz beruht auf Vertrauen und darauf, dass Denis den Quelltext nicht öffnet.</p>'+
 '<button class=alt onclick="act(\'reset\')">'+(rs?'Wirklich alles zurücksetzen – nochmal tippen':'Alles zurücksetzen')+'</button><button onclick="document.getElementById(\'gm\').classList.remove(\'show\');gm=false">Zurück zum Spiel</button></div>';
